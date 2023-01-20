@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  server:
+    image: server
+    build:
+      context: ./
+      dockerfile: Dockerfile.development
+    ports:
+      - 5000:5000
+    restart: always
+    volumes:
+      - /app/node_modules
+      - ./:/app
+      - ./.env:/app/.env
+networks:
+  internal:
